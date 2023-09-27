@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:untitled/components/home_window_header.dart';
 import 'package:untitled/components/podcast_window_header.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:untitled/store/StoreObserver.dart';
+import 'package:untitled/store/store.dart';
 
 import 'components/drawer_item.dart';
 import 'components/home_window_body.dart';
 import 'components/settings_window_header.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  StoreObserver observer = StoreObserver();
   runApp(const MyApp());
 }
 
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(create: (_)=>StoreCubit(), child: MaterialApp(
       title: 'PodFetch Mobile',
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
         '/podcasts': (ctx)=> const MainScreen(headerContent: PodcastWindowHeader(), bodyContent: Text('test2')),
         '/settings': (ctx)=> const MainScreen(headerContent: SettingsWindowHeader(), bodyContent: Text('test3')),
       },
-    );
+    ));
   }
 }
 
