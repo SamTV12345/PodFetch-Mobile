@@ -8,6 +8,7 @@ import 'package:untitled/store/store.dart';
 
 import 'components/drawer_item.dart';
 import 'components/home_window_body.dart';
+import 'components/podcast_window_body.dart';
 import 'components/settings_window_header.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (ctx)=> const MainScreen(headerContent: HomeWindowHeader(),bodyContent: HomeWindowBody()),
-        '/podcasts': (ctx)=> const MainScreen(headerContent: PodcastWindowHeader(), bodyContent: Text('test2')),
+        '/podcasts': (ctx)=>  const MainScreen(headerContent: PodcastWindowHeader(), bodyContent: PodcastWindowBody()),
         '/settings': (ctx)=> const MainScreen(headerContent: SettingsWindowHeader(), bodyContent: Text('test3')),
       },
     ));
